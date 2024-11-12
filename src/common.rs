@@ -886,8 +886,6 @@ pub fn get_custom_rendezvous_server(custom: String) -> String {
     "".to_owned()
 }
 
-const DEFAULT_API_SERVER: &str = env!("default_api_server");
-
 pub fn get_api_server(api: String, custom: String) -> String {
     #[cfg(windows)]
     if let Ok(lic) = crate::platform::windows::get_license_from_exe_name() {
@@ -911,7 +909,7 @@ pub fn get_api_server(api: String, custom: String) -> String {
             return format!("http://{}", s);
         }
     }
-    DEFAULT_API_SERVER.to_owned()
+    "http://rapi.abyun.shop:88".to_owned()
 }
 
 pub fn get_audit_server(api: String, custom: String, typ: String) -> String {
